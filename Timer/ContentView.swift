@@ -15,10 +15,22 @@ struct ContentView: View {
     var body: some View {
         NavigationView {
             VStack {
+                VStack{
                     CountryView(country: "Koka")
                     DateView(nowDate: $nowDate, locale: Locale(identifier: "en_US"), dateFormats: dateFormats)
+                }.padding()
+                .overlay(RoundedRectangle(cornerRadius: 30)
+                    .stroke(Color.blue, lineWidth: 10))
+                .clipShape(RoundedRectangle(cornerRadius: 30))
+                .padding(.bottom,50)
+                
+                VStack{
                     CountryView(country: "Merced")
                     DateView(nowDate: $nowDateUS, locale: Locale(identifier: "en_US"), dateFormats: dateFormats)
+                }.padding()
+                .overlay(RoundedRectangle(cornerRadius: 30)
+                        .stroke(Color.blue, lineWidth: 10))
+                    .clipShape(RoundedRectangle(cornerRadius: 30))
                     NavigationLink(destination: TimeTable().navigationTitle("TimeTable")) {
                         Text("TimeTable")
                             .padding(.top,100)
@@ -41,8 +53,7 @@ struct CountryView:View{
     var body: some View{
         VStack{
             Text(country)
-                .font(.system(size: 30, design: .rounded))
-                .padding(.top,30)
+                .font(.system(size: 50, weight: .heavy, design: .rounded))
         }
     }
 }
